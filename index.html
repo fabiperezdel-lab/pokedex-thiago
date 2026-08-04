@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Pokedex de Thiago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>⚡ Pokedex de Thiago ⚡</h1>
+  </header>
+
+  <main class="app-main">
+
+    <!-- ===== TAB: POKEDEX ===== -->
+    <section id="tab-pokedex" class="tab-panel active">
+      <div class="controls">
+        <input type="search" id="search-input" class="search-input" placeholder="🔍 Buscar por nombre o número...">
+        <select id="type-filter" class="type-select">
+          <option value="">Todos los tipos</option>
+        </select>
+      </div>
+      <div id="loading" class="loading">
+        <div class="pokeball-spinner"></div>
+        <p id="loading-text">Cargando Pokémon...</p>
+        <p class="loading-hint">La primera vez puede tardar 1 o 2 minutos. ¡Después queda guardado y carga al instante! ⚡</p>
+      </div>
+      <div id="pokedex-grid" class="pokemon-grid"></div>
+      <p id="pokedex-empty" class="empty-message hidden">No se encontró ningún Pokémon 😢</p>
+    </section>
+
+    <!-- ===== TAB: FAVORITOS ===== -->
+    <section id="tab-favoritos" class="tab-panel">
+      <h2 class="section-title">❤️ Mis Favoritos</h2>
+      <div id="favoritos-grid" class="pokemon-grid"></div>
+      <p id="favoritos-empty" class="empty-message hidden">Todavía no marcaste ningún favorito. ¡Tocá el corazón en un Pokémon! ❤️</p>
+    </section>
+
+    <!-- ===== TAB: COLECCION ===== -->
+    <section id="tab-coleccion" class="tab-panel">
+      <h2 class="section-title">🎴 Mi Colección</h2>
+      <div class="collection-counter">
+        <div class="counter-bar-bg">
+          <div id="counter-bar-fill" class="counter-bar-fill"></div>
+        </div>
+        <p id="collection-counter-text">0/1025 conseguidos</p>
+      </div>
+      <div id="coleccion-grid" class="pokemon-grid"></div>
+    </section>
+
+    <!-- ===== TAB: QUIZ ===== -->
+    <section id="tab-quiz" class="tab-panel">
+      <h2 class="section-title">❓ ¿Quién es ese Pokémon?</h2>
+      <p id="quiz-score" class="quiz-score">Aciertos: 0 / 0</p>
+      <div class="quiz-box">
+        <img id="quiz-image" class="silhouette" src="" alt="¿Quién es?">
+      </div>
+      <div id="quiz-options" class="quiz-options"></div>
+      <p id="quiz-feedback" class="quiz-feedback"></p>
+      <button id="quiz-next-btn" class="btn-primary hidden">Siguiente ▶</button>
+    </section>
+
+  </main>
+
+  <!-- ===== NAV INFERIOR ===== -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-tab="pokedex">
+      <span class="nav-icon">📖</span><span>Pokedex</span>
+    </button>
+    <button class="nav-btn" data-tab="favoritos">
+      <span class="nav-icon">❤️</span><span>Favoritos</span>
+    </button>
+    <button class="nav-btn" data-tab="coleccion">
+      <span class="nav-icon">🎴</span><span>Colección</span>
+    </button>
+    <button class="nav-btn" data-tab="quiz">
+      <span class="nav-icon">❓</span><span>Quiz</span>
+    </button>
+  </nav>
+
+  <!-- ===== MODAL DE DETALLE ===== -->
+  <div id="detail-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close">✖</button>
+      <p class="detail-number" id="detail-number">#001</p>
+      <h2 id="detail-name" class="detail-name">Pokémon</h2>
+      <div class="detail-types" id="detail-types"></div>
+      <img id="detail-image" class="detail-image" src="" alt="">
+      <button id="detail-sound-btn" class="btn-sound">🔊 Escuchar sonido</button>
+      <p id="detail-description" class="detail-description">...</p>
+      <div class="detail-stats" id="detail-stats"></div>
+      <div class="detail-actions">
+        <button id="detail-fav-btn" class="btn-action">🤍 Favorito</button>
+        <button id="detail-collect-btn" class="btn-action">🎴 Tengo esta carta</button>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="photo-input" accept="image/*" capture="environment" class="hidden">
+  <audio id="cry-audio"></audio>
+
+  <script src="js/api.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/coleccion.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
